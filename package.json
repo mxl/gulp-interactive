@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/mxl/gulp-interactive#readme",
   "devDependencies": {
+    "gulp": "^3.9.1",
     "mocha": "^3.3.0",
     "mock-stdin": "^0.3.1"
   },
