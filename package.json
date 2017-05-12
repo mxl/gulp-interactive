@@ -1,10 +1,11 @@
 {
   "name": "gulp-interactive",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Gulp interactive prompt.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": "mxl/gulp-interactive",
   "keywords": [
@@ -32,7 +33,9 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "mocha": "^3.3.0",
-    "mock-stdin": "^0.3.1"
+    "mock-stdin": "^0.3.1",
+    "semantic-release-cli": "^3.0.3",
+    "semantic-release": "^6.3.6"
   },
   "peerDependencies": {
     "gulp": "3.x"

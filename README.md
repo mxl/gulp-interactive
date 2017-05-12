@@ -1,6 +1,7 @@
 [![npm](https://img.shields.io/npm/v/gulp-interactive.svg)](https://www.npmjs.com/package/gulp-interactive)
 [![Build Status](https://travis-ci.org/mxl/gulp-interactive.svg?branch=master)](https://travis-ci.org/mxl/gulp-interactive)
 [![David](https://img.shields.io/david/mxl/gulp-interactive.svg)](https://david-dm.org/mxl/gulp-interactive)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 # gulp-interactive
 Gulp interactive prompt.
