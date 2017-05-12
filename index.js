@@ -5,7 +5,10 @@ module.exports = function (options) {
   var repeatOnEnter = options.repeatOnEnter || false;
   var taskName = options.taskName || 'prompt';
 
-  var lastPromptedTask;
+  var state = {
+    repeatOnEnter: repeatOnEnter,
+    taskName: taskName
+  };
 
   gulp.task(taskName, function (cb) {
     var promptedTask;
@@ -18,7 +21,7 @@ module.exports = function (options) {
     function onTaskEnd(event) {
       setTimeout(function () {
         if (event && promptedTask && event.task === promptedTask) {
-          lastPromptedTask = promptedTask;
+          state.lastPromptedTask = promptedTask;
           gulp.removeListener('task_stop', onTaskEnd);
           gulp.removeListener('task_err', onTaskEnd);
           gulp.removeListener('task_not_found', onTaskEnd);
@@ -40,7 +43,7 @@ module.exports = function (options) {
       .then(function (answers) {
         promptedTask = answers.task;
         if (repeatOnEnter) {
-          promptedTask = promptedTask || lastPromptedTask;
+          promptedTask = promptedTask || state.lastPromptedTask;
         }
         promptedTask = promptedTask || taskName;
         cb();
@@ -49,4 +52,6 @@ module.exports = function (options) {
         }
       });
   });
+
+  return state;
 };
