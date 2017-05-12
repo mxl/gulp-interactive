@@ -13,7 +13,7 @@ $ npm install --save-dev gulp-interactive
 
 ## Usage
 
-**gulpfile.js**
+### gulpfile.js
 ```js
 var gulp = require('gulp')
 var interactive = require('gulp-interactive')
@@ -26,17 +26,32 @@ gulp.task('build', function(cb) {
 
 ```
 
-**Shell**
+### Shell
+
+Launch interactive prompt:
+
 ```bash
 $ gulp prompt
 [01:37:56] Using gulpfile ~/gulp-interactive-example/gulpfile.js
 [01:37:56] Starting 'prompt'...
+? Enter gulp task name:
+```
+
+Then enter task name:
+
+```bash
 ? Enter gulp task name: build
 [01:38:05] Finished 'prompt' after 9 s
 [01:38:05] Starting 'build'...
 [01:39:05] Finished 'build' after 15 μs
 [01:39:05] Starting 'prompt'...
+? Enter gulp task name:
+```
+
+Enter `:q` to exit prompt.
+```bash
 ? Enter gulp task name: :q
+[01:39:09] Finished 'prompt' after 4 s
 ```
 
 ## API
@@ -52,7 +67,7 @@ Type: `Object`
 Type: `boolean`<br>
 Default: `false`
 
-Repeat last executed task simply pressing Enter.
+Repeat last executed task by simply pressing Enter.
 
 ##### taskName
 
