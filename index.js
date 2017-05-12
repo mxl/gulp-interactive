@@ -44,7 +44,9 @@ module.exports = function (options) {
         }
         promptedTask = promptedTask || taskName;
         cb();
-        gulp.start(promptedTask);
+        if (promptedTask !== ':q') {
+          gulp.start(promptedTask);
+        }
       });
   });
 };
