@@ -1,7 +1,6 @@
 module.exports = function (options) {
-  var gulp = require('gulp');
-
   options = options || {};
+  var gulp = options.gulp || require('gulp');
   var repeatOnEnter = options.repeatOnEnter || false;
   var taskName = options.taskName || 'prompt';
 
