@@ -4,8 +4,7 @@
   "description": "Gulp interactive prompt.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "test": "mocha"
   },
   "repository": "mxl/gulp-interactive",
   "keywords": [
