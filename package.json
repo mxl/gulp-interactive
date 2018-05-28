@@ -32,15 +32,15 @@
   "homepage": "https://github.com/mxl/gulp-interactive#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "mocha": "^3.3.0",
+    "mocha": "^5.2.0",
     "mock-stdin": "^0.3.1",
-    "semantic-release-cli": "^3.0.3",
-    "semantic-release": "^6.3.6"
+    "semantic-release-cli": "^4.0.1",
+    "semantic-release": "^15.5.0"
   },
   "peerDependencies": {
     "gulp": "3.x"
   },
   "dependencies": {
-    "inquirer": "^3.0.6"
+    "inquirer": "^5.2.0"
   }
 }

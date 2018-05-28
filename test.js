@@ -1,12 +1,8 @@
-var interactive = require('./');
-var gulp = require('gulp');
-var assert = require('assert');
-// gulp.task('test', function (cb) {
-//   cb();
-// });
-// interactive();
-// gulp.start('prompt');
-//
+const
+  assert = require('assert'),
+  interactive = require('./'),
+  gulp = require('gulp');
+
 describe('interactive', function () {
   var stdin;
 
