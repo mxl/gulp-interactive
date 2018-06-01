@@ -1,16 +1,18 @@
+const inquirer = require('inquirer');
+
 module.exports = function (options) {
   options = options || {};
-  var gulp = options.gulp || require('gulp');
-  var repeatOnEnter = options.repeatOnEnter || false;
-  var taskName = options.taskName || 'prompt';
+  const gulp = options.gulp || require('gulp');
+  const repeatOnEnter = options.repeatOnEnter || false;
+  const taskName = options.taskName || 'prompt';
 
-  var state = {
+  const state = {
     repeatOnEnter: repeatOnEnter,
     taskName: taskName
   };
 
   gulp.task(taskName, function (cb) {
-    var promptedTask;
+    let promptedTask;
 
     function startPrompt() {
       promptedTask = undefined;
@@ -37,7 +39,6 @@ module.exports = function (options) {
       onTaskEnd(err);
     });
 
-    var inquirer = require('inquirer');
     inquirer.prompt([{ type: 'input', name: 'task', 'message': 'Enter gulp task name:' }])
       .then(function (answers) {
         promptedTask = answers.task;
