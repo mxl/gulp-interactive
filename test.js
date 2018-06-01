@@ -4,39 +4,39 @@ const
   gulp = require('gulp');
 
 describe('interactive', function () {
-  var stdin;
+  let stdin;
 
   beforeEach(function () {
     stdin = require('mock-stdin').stdin();
   });
 
   it('launches interactive prompt and executes task', function (done) {
-    var taskName = 'test';
+    const taskName = 'test';
     gulp.task(taskName, function (cb) {
       cb();
       done();
     });
-    var state = interactive();
+    const state = interactive();
     gulp.start(state.taskName);
     stdin.send(taskName + '\n');
   });
 
   it('launches interactive prompt with custom task name and executes task', function (done) {
-    var taskName = 'test';
+    const taskName = 'test';
     gulp.task(taskName, function (cb) {
       cb();
       done();
     });
-    var promptTaskName = 'prompt2';
-    var state = interactive({ taskName: promptTaskName });
+    const promptTaskName = 'prompt2';
+    const state = interactive({ taskName: promptTaskName });
     assert.equal(promptTaskName, state.taskName);
     gulp.start(promptTaskName);
     stdin.send(taskName + '\n');
   });
 
   it('launches previously executed task on enter', function (done) {
-    var taskName = 'test';
-    var secondRun = false;
+    const taskName = 'test';
+    let secondRun = false;
     gulp.task(taskName, function (cb) {
       cb();
       if (secondRun) {
@@ -46,7 +46,7 @@ describe('interactive', function () {
         stdin.send('');
       }
     });
-    var state = interactive({ repeatOnEnter: true });
+    const state = interactive({ repeatOnEnter: true });
     gulp.start(state.taskName);
     stdin.send(taskName + '\n');
   });
