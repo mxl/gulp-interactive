@@ -35,6 +35,7 @@ module.exports = function (options) {
     gulp.on('task_err', onTaskEnd);
     gulp.removeAllListeners('task_not_found');
     gulp.on('task_not_found', function (err) {
+      // eslint-disable-next-line no-console
       console.log('Task \'' + err.task + '\' is not in your gulpfile');
       onTaskEnd(err);
     });

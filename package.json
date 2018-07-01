@@ -4,6 +4,7 @@
   "description": "Gulp interactive prompt.",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint *.js",
     "test": "mocha"
   },
   "repository": "mxl/gulp-interactive",
@@ -30,16 +31,17 @@
   },
   "homepage": "https://github.com/mxl/gulp-interactive#readme",
   "devDependencies": {
+    "eslint": "^5.0.1",
     "gulp": "^3.9.1",
     "mocha": "^5.2.0",
     "mock-stdin": "^0.3.1",
-    "semantic-release-cli": "^4.0.1",
-    "semantic-release": "^15.5.0"
+    "semantic-release": "^15.6.0",
+    "semantic-release-cli": "^4.0.5"
   },
   "peerDependencies": {
     "gulp": "3.x"
   },
   "dependencies": {
-    "inquirer": "^5.2.0"
+    "inquirer": "^6.0.0"
   }
 }

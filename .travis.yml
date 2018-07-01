@@ -12,6 +12,8 @@ node_js:
   - '6'
 before_script:
   - npm prune
+script:
+  - npm run lint && npm test
 after_success:
   - npx semantic-release
 branches:
