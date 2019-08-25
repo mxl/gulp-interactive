@@ -18,7 +18,7 @@ describe('interactive', function () {
     });
     const state = interactive();
     gulp.start(state.taskName);
-    stdin.send(taskName + '\n');
+    stdin.send([taskName, '']);
   });
 
   it('launches interactive prompt with custom task name and executes task', function (done) {
@@ -31,7 +31,7 @@ describe('interactive', function () {
     const state = interactive({ taskName: promptTaskName });
     assert.equal(promptTaskName, state.taskName);
     gulp.start(promptTaskName);
-    stdin.send(taskName + '\n');
+    stdin.send([taskName]);
   });
 
   it('launches previously executed task on enter', function (done) {
@@ -43,11 +43,28 @@ describe('interactive', function () {
         done();
       } else {
         secondRun = true;
-        stdin.send('');
       }
     });
     const state = interactive({ repeatOnEnter: true });
     gulp.start(state.taskName);
-    stdin.send(taskName + '\n');
+    stdin.send([taskName, '']);
   });
+
+  it('handles errors', function (done) {
+    const taskName = 'test';
+    let secondRun = false;
+    gulp.task(taskName, function (cb) {
+      if (secondRun) {
+        cb();
+        done();
+      } else {
+        secondRun = true;
+        throw new Error();
+      }
+    });
+    const state = interactive({
+    });
+    gulp.start(state.taskName);
+    stdin.send([taskName, taskName]);
+  })
 });

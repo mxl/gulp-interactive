@@ -11,44 +11,35 @@ module.exports = function (options) {
     taskName: taskName
   };
 
+  function startPrompt() {
+    gulp.start(taskName);
+  }
+
+  gulp.on('task_not_found', function (err) {
+    console.log('Task \'' + err.task + '\' is not in your gulpfile');
+    startPrompt();
+  });
+
   gulp.task(taskName, function (cb) {
     let promptedTask;
 
-    function startPrompt() {
-      promptedTask = undefined;
-      gulp.start(taskName);
-    }
-
-    function onTaskEnd(event) {
-      setTimeout(function () {
-        if (event && promptedTask && event.task === promptedTask) {
-          state.lastPromptedTask = promptedTask;
-          gulp.removeListener('task_stop', onTaskEnd);
-          gulp.removeListener('task_err', onTaskEnd);
-          gulp.removeListener('task_not_found', onTaskEnd);
-          startPrompt();
-        }
-      });
-    }
-
-    gulp.on('task_stop', onTaskEnd);
-    gulp.on('task_err', onTaskEnd);
-    gulp.removeAllListeners('task_not_found');
-    gulp.on('task_not_found', function (err) {
-      console.log('Task \'' + err.task + '\' is not in your gulpfile');
-      onTaskEnd(err);
-    });
-
-    inquirer.prompt([{ type: 'input', name: 'task', 'message': 'Enter gulp task name:' }])
+    inquirer.prompt([{type: 'input', name: 'task', 'message': 'Enter gulp task name:'}])
       .then(function (answers) {
-        promptedTask = answers.task;
-        if (repeatOnEnter) {
-          promptedTask = promptedTask || state.lastPromptedTask;
-        }
-        promptedTask = promptedTask || taskName;
-        cb();
+        promptedTask = answers.task || (repeatOnEnter ? promptedTask : null) || taskName;
         if (promptedTask !== ':q') {
-          gulp.start(promptedTask);
+          gulp.start(promptedTask, function (err) {
+            cb();
+            startPrompt();
+            if (err) {
+              if (typeof options.onError === 'function') {
+                options.onError(err);
+              } else {
+                console.error(err);
+              }
+            }
+          });
+        } else {
+          cb();
         }
       });
   });
