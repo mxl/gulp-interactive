@@ -35,7 +35,7 @@
     "gulp": "^3.9.1",
     "mocha": "^5.2.0",
     "mock-stdin": "^0.3.1",
-    "semantic-release": "^15.6.0",
+    "semantic-release": "^17.2.3",
     "semantic-release-cli": "^4.0.5"
   },
   "peerDependencies": {
